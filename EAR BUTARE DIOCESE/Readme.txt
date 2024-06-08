@@ -1,0 +1,1 @@
+Anglican Church of Rwanda Butare Diocese
