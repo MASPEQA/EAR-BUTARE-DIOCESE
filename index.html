@@ -24,6 +24,8 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <!-- Contentful SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
 </head>
 
 <body>
@@ -112,58 +114,10 @@
      <section class="services">
       <div class="container">
 
-        <div class="row">
+        <div class="row" id="contentful-values">
           <div class="section-title">
             <h2>Our Values </h2>
-           
           </div>
-        
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box icon-box-blue">
-              <h4 class="title"><a href="">Love</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
-                </p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box icon-box-blue">
-              <h4 class="title"><a href="">Integrity</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box icon-box-blue">
-              <h4 class="title"><a href="">Excellence</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box icon-box-blue">
-              <h4 class="title"><a href="">Accountability</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box icon-box-blue">
-              <h4 class="title"><a href="">Humility</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon-box icon-box-blue">
-              <h4 class="title"><a href="">Stewardship</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-          </div>
-
-        
-
         </div>
 
       </div>
@@ -250,5 +204,28 @@
   <script src="assets/js/main.js"></script>
 
 </body>
+<script type="module">
+  import { fetchContentByType } from './assets/js/contentful.js';
 
+  document.addEventListener('DOMContentLoaded', () => {
+      fetchContentByType('ourValues', null)
+          .then(posts => {
+              const contentDiv = document.getElementById('contentful-values');
+              posts.forEach(post => {
+                  const postElement = document.createElement('div');
+                  postElement.classList.add('col-md-6', 'col-lg-3', 'd-flex', 'align-items-stretch');
+                  postElement.setAttribute('data-aos','fade-up')
+                  postElement.setAttribute('data-aos-delay','200');
+                  postElement.innerHTML = `
+                    <div class="icon-box icon-box-blue">
+                      <h4 class="title"><a href="">${post.fields.title}</a></h4>
+                      <p class="description"> ${post.fields.description} </p>
+                    </div>
+                  `;
+                  contentDiv.appendChild(postElement);
+              });
+          })
+          .catch(error => console.error('Error fetching content:', error));
+  });
+</script>
 </html>

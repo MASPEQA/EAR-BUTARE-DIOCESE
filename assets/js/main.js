@@ -246,3 +246,15 @@
   window.addEventListener('load', initClientsSwiper);
 
 })()
+
+
+
+
+
+
+
+
+// Ensure the Contentful SDK is loaded
+const script = document.createElement('script');
+script.src = 'https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js';
+document.head.appendChild(script);

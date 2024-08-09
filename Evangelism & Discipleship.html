@@ -62,30 +62,8 @@
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
 
-        <div class="row">
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/usable/4.jpeg" alt="...">   
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="#">Community Bible Study(CBS)</a></h5>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/usable/11.jpeg" alt="..."> 
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="#">Church Transformation Network(CTN)</a></h5>
-                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
-              </div>
-            </div>
+        <div class="row" id="contentful-posts">
             
-                 
       </div>
     </section><!-- End Service Details Section -->
 
@@ -154,5 +132,34 @@
   <script src="assets/js/main.js"></script>
 
 </body>
+<script type="module">
+  import { fetchContentByType } from './assets/js/contentful.js';
 
+  document.addEventListener('DOMContentLoaded', () => {
+      fetchContentByType('posts', 'evangelism page')
+          .then(posts => {
+              const contentDiv = document.getElementById('contentful-posts');
+              posts.forEach(post => {
+                  const postElement = document.createElement('div');
+                  postElement.classList.add('col-md-6', 'd-flex', 'align-items-stretch');
+                  postElement.setAttribute('data-aos','fade-up')
+                  let imageUrl = 'https:'+post.fields.image.fields.file.url
+                  postElement.innerHTML = `
+                    <div class="card">
+                      <div class="card-img">
+                        <imdd src="assets/img/usable/6.jpeg" alt="...">             
+                        <img src=${imageUrl} alt="...">
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="#">${post.fields.title}</a></h5>
+                        <p class="card-text">${post.fields.description}</p>
+                      </div>
+                    </div> 
+                  `;
+                  contentDiv.appendChild(postElement);
+              });
+          })
+          .catch(error => console.error('Error fetching content:', error));
+  });
+</script>
 </html>

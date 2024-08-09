@@ -24,6 +24,7 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet"> 
+  <script src="https://cdn.jsdelivr.net/npm/contentful@latest/dist/contentful.browser.min.js"></script>
 </head>
 
 <body>
@@ -58,7 +59,7 @@
     <section class="service-details">
       <div class="container">
         
-        <div class="row">
+        <div class="row" id="contentful-posts">
           <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
             <div class="card">
               
@@ -81,28 +82,6 @@
            <div class="section-title">
             <h2>Business</h2>
             <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/usable/6.jpeg" alt="...">             
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="#">Shalom Guest House</a></h5>
-                <p class="card-text">Nemo enim ipsam voluptatem quia voluptas sit aut odit aut fugit, sed quia magni dolores eos qui ratione voluptatem sequi nesciunt Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet</p>
-              </div>
-            </div> 
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch" data-aos="fade-up">
-            <div class="card">
-              <div class="card-img">
-                <img src="assets/img/usable/4.jpeg" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="#">Nehemiah Coffee Shop</a></h5>
-                <p class="card-text">Nostrum eum sed et autem dolorum perspiciatis. Magni porro quisquam laudantium voluptatem. In molestiae earum ab sit esse voluptatem. Eos ipsam cumque ipsum officiis qui nihil aut incidunt aut</p>
-              </div>
-            </div>
           </div>
 
           <!--  -->
@@ -176,5 +155,36 @@
   <script src="assets/js/main.js"></script>
 
 </body>
+
+<script type="module">
+  import { fetchContentByType } from './assets/js/contentful.js';
+
+  document.addEventListener('DOMContentLoaded', () => {
+      fetchContentByType('posts', 'business page')
+          .then(posts => {
+              const contentDiv = document.getElementById('contentful-posts');
+              posts.forEach(post => {
+                  const postElement = document.createElement('div');
+                  postElement.classList.add('col-md-6', 'd-flex', 'align-items-stretch');
+                  postElement.setAttribute('data-aos','fade-up')
+                  let imageUrl = 'https:'+post.fields.image.fields.file.url
+                  postElement.innerHTML = `
+                    <div class="card">
+                      <div class="card-img">
+                        <imdd src="assets/img/usable/6.jpeg" alt="...">             
+                        <img src=${imageUrl} alt="...">
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="#">${post.fields.title}</a></h5>
+                        <p class="card-text">${post.fields.description}</p>
+                      </div>
+                    </div> 
+                  `;
+                  contentDiv.appendChild(postElement);
+              });
+          })
+          .catch(error => console.error('Error fetching content:', error));
+  });
+</script>
 
 </html>
