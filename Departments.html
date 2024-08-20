@@ -137,7 +137,7 @@
   import { fetchContentByType } from './assets/js/contentful.js';
 
   document.addEventListener('DOMContentLoaded', () => {
-      fetchContentByType('posts', 'ministry page')
+      fetchContentByType('posts', 'departments page')
           .then(posts => {
               const contentDiv = document.getElementById('contentful-posts');
               posts.forEach(post => {
