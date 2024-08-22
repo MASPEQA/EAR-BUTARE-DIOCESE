@@ -34,6 +34,8 @@ h6,
   font-family: "Roboto", sans-serif;
 }
 
+
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -2338,4 +2340,11 @@ section {
 
 #footer .credits a {
   color: #a2cce3;
+}
+
+
+.card-img img{
+  max-height: 300px !important;
+  object-fit: cover !important;
+  width: 100%;
 }

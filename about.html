@@ -195,9 +195,11 @@ We have partnership with various organizations primarily for spiritual and socio
   import { fetchContentByType } from './assets/js/contentful.js';
 
   document.addEventListener('DOMContentLoaded', () => {
+    const contentDiv = document.getElementById('contentful-values');
+    contentDiv.innerHTML = '<p>Loading...</p>';
       fetchContentByType('ourValues', null)
           .then(posts => {
-              const contentDiv = document.getElementById('contentful-values');
+              contentDiv.innerHTML = '';
               posts.forEach(post => {
                   const postElement = document.createElement('div');
                   postElement.classList.add('col-md-6', 'col-lg-3', 'd-flex', 'align-items-stretch');
