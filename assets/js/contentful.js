@@ -1,5 +1,5 @@
-const spaceId = 'bn26cr8gkagc';
-const accessToken = 'lFw0Iyg3HZCx2K4ApwL1pnKV1IJUGDppMWyQ6lpY5aE';
+const spaceId = 'lxfghpzvr6fo';
+const accessToken = 'Z4aZVSagpPl8wP7RdNXGKg5KDPoZmxht1zOgtLKTYUo';
 
 export const client = contentful.createClient({
     space: spaceId,
