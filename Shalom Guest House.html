@@ -168,7 +168,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('contentful-posts');
     contentDiv.innerHTML = '<p>Loading...</p>';
-      fetchContentByType('posts', 'pastoral ministry')
+      fetchContentByType('posts', 'Shalom guest house')
           .then(posts => {
             contentDiv.innerHTML = ''
               posts.forEach(post => {
