@@ -37,46 +37,46 @@
     </div>
 
     <nav id="navbar" class="navbar">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li class="dropdown"><a href="Pastoral Ministry.html"><span>Pastoral Ministry</span> <i class="bi bi-chevron-down toggle-dropdown"> </i> </a>
-          <ul>
-            <li><a href="Community Bible Study.html">Community Bible Study</a></li>
-            <li><a href="Church Transformation Network.html">Church Transformation Network</a></li>
-          </ul>
-        
-        </li>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li class="dropdown"><a href="Pastoral Ministry.html"><span>Pastoral Ministry</span> <i class="bi bi-chevron-down toggle-dropdown"> </i> </a>
+            <ul>
+              <li><a href="Community Bible Study.html">Community Bible Study</a></li>
+              <li><a href="Church Transformation Network.html">Church Transformation Network</a></li>
+            </ul>
+          
+          </li>
 
-        <li class="dropdown"><a href="Departments.html"><span>Departments</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="Mothers union.html">Mothers Union</a></li>
-            <li><a href="Fathers Union.html">Fathers Union</a></li>
-            <li><a href="Children and Youth.html">Children and Youth</a></li>
-            <li><a href="Evangelsim and discipleship.html">Evangelsim and Discipleship</a></li>
-          </ul>
-        </li>
+          <li class="dropdown"><a href="Departments.html"><span>Departments</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+            <ul>
+              <li><a href="Mothers union.html">Mothers Union</a></li>
+              <li><a href="Fathers Union.html">Fathers Union</a></li>
+              <li><a href="Children and Youth.html">Children and Youth</a></li>
+              <li><a href="Evangelsim and discipleship.html">Evangelsim and Discipleship</a></li>
+            </ul>
+          </li>
 
-        <li class="dropdown"><a href="Projects.html"><span>Projects</span> <i class="bi bi-chevron-down toggle-dropdown"> </i> </a>
-          <ul>
-            <li><a href="Schools.html">Doicesan Schools</a></li>
-            <li><a href="Supported projects.html">Supported Projects</a></li>
-            <li><a href="Credits and saving groups.html">Credit and Savings Group</a></li>
-          </ul>
-        
-        </li>
+          <li class="dropdown"><a href="Projects.html"><span>Projects</span> <i class="bi bi-chevron-down toggle-dropdown"> </i> </a>
+            <ul>
+              <li><a href="Schools.html">Doicesan Schools</a></li>
+              <li><a href="Supported projects.html">Supported Projects</a></li>
+              <li><a href="Credits and saving groups.html">Credit and Savings Group</a></li>
+            </ul>
+          
+          </li>
 
-        <li class="dropdown"><a href="business.html"><span>Business<span> <i class="bi bi-chevron-down toggle-dropdown"> </i> </a>
-          <ul>
-            <li><a href="Shalom Guest House.html">Shalom Guest House</a></li>
-            <li><a href="Nehemiah Coffee Shop.html">Nehemiah Coffee Shop</a></li>
-          </ul>
-        
-        </li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
+          <li class="dropdown"><a href="business.html"><span>Business<span> <i class="bi bi-chevron-down toggle-dropdown"> </i> </a>
+            <ul>
+              <li><a href="Shalom Guest House.html">Shalom Guest House</a></li>
+              <li><a href="Nehemiah Coffee Shop.html">Nehemiah Coffee Shop</a></li>
+            </ul>
+          
+          </li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
 
   </div>
 </header><!-- End Header --> 
@@ -88,7 +88,7 @@
         
 
         <div class="section-title">
-          <h2>Church Transformation Network</h2>
+          <h2>Evangelism and Discipleship</h2>
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
         <div class="row" id="contentful-posts">
@@ -172,7 +172,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('contentful-values');
     contentDiv.innerHTML = '<p>Loading...</p>';
-      fetchContentByType('posts', 'Church transformation network')
+      fetchContentByType('posts', 'Evangelism and discipleship')
           .then(posts => {
               contentDiv.innerHTML = '';
               posts.forEach(post => {

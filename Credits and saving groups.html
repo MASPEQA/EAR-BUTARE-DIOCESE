@@ -43,7 +43,7 @@
         <li class="dropdown"><a href="Pastoral Ministry.html"><span>Pastoral Ministry</span> <i class="bi bi-chevron-down toggle-dropdown"> </i> </a>
           <ul>
             <li><a href="Community Bible Study.html">Community Bible Study</a></li>
-            <li><a href="Fathers Union.html">Church Transformation Network</a></li>
+            <li><a href="Church Transformation Network.html">Church Transformation Network</a></li>
           </ul>
         
         </li>
@@ -53,13 +53,13 @@
             <li><a href="Mothers union.html">Mothers Union</a></li>
             <li><a href="Fathers Union.html">Fathers Union</a></li>
             <li><a href="Children and Youth.html">Children and Youth</a></li>
-            <li><a href="Community and Bible Study.html">Community and Bible Study</a></li>
+            <li><a href="Evangelsim and discipleship.html">Evangelsim and Discipleship</a></li>
           </ul>
         </li>
 
-        <li class="dropdown active"><a href="Projects.html"><span>Projects</span> <i class="bi bi-chevron-down toggle-dropdown"> </i> </a>
+        <li class="dropdown"><a href="Projects.html"><span>Projects</span> <i class="bi bi-chevron-down toggle-dropdown"> </i> </a>
           <ul>
-            <li><a href="Schools.html">Schools</a></li>
+            <li><a href="Schools.html">Doicesan Schools</a></li>
             <li><a href="Supported projects.html">Supported Projects</a></li>
             <li><a href="Credits and saving groups.html">Credit and Savings Group</a></li>
           </ul>
@@ -172,7 +172,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('contentful-values');
     contentDiv.innerHTML = '<p>Loading...</p>';
-      fetchContentByType('ourValues', null)
+      fetchContentByType('posts', 'Credit and saving groups')
           .then(posts => {
               contentDiv.innerHTML = '';
               posts.forEach(post => {
