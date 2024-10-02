@@ -195,7 +195,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('contentful-values');
     contentDiv.innerHTML = '<p>Loading...</p>';
-      fetchContentByType('ourValues', null)
+      fetchContentByType('posts', 'Mothers union')
           .then(posts => {
               contentDiv.innerHTML = '';
               posts.forEach(post => {
