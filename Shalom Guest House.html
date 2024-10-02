@@ -91,23 +91,18 @@
 
   <main id="main">
 
-    <!-- ======= All projects and programms start ======= -->
+    <!-- ======= Page Content  ======= -->
     <section class="service-details">
       <div class="container">
-        
-
         <div class="section-title">
-          <h2>Departments</h2>
+          <h2>Shalom Guest House</h2>
           <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
         </div>
-        <div class="row" id="contentful-posts">
-          
 
-           
-        </div>
-       
+        <div class="row" id="contentful-posts">
+            
       </div>
-    </section><!-- End Service Details Section -->
+    </section> <!-- End Page Content -->
 
    
   </main><!-- End #main -->
@@ -123,11 +118,15 @@
 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Projects and programs</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
-            </ul>
+             <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="Pastoral Ministry.html">Pastoral Ministry</a></li>
+                <li><a href="Departments.html">Departments</a></li>
+                <li><a href="Projects.html">Projects</a></li>
+                <li><a href="Business.html">Business</a></li>
+                <li><a href="contact.html">Contact Us</a></li> 
+              </ul>
           </div>
 
           <div class="col-lg-3 col-md-6 footer-contact">
@@ -176,9 +175,9 @@
   document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('contentful-posts');
     contentDiv.innerHTML = '<p>Loading...</p>';
-    fetchContentByType('posts', 'departments page')
-    .then(posts => {
-              contentDiv.innerHTML = ''
+      fetchContentByType('posts', 'Shalom guest house')
+          .then(posts => {
+            contentDiv.innerHTML = ''
               posts.forEach(post => {
                   const postElement = document.createElement('div');
                   postElement.classList.add('col-md-6', 'd-flex', 'align-items-stretch');
@@ -188,7 +187,7 @@
                     <div class="card">
                       <div class="card-img">
                         <imdd src="assets/img/usable/6.jpeg" alt="...">             
-                        <img src=${imageUrl} alt="...">
+                        <img src=${imageUrl} alt="..." style="width:100%;max-height:300px;object-fit:cover">
                       </div>
                       <div class="card-body">
                         <h5 class="card-title"><a href="#">${post.fields.title}</a></h5>
