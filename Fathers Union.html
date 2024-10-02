@@ -184,17 +184,23 @@
     contentDiv.innerHTML = '<p>Loading...</p>';
       fetchContentByType('posts', 'Fathers union')
           .then(posts => {
-              contentDiv.innerHTML = '';
+            contentDiv.innerHTML = ''
               posts.forEach(post => {
                   const postElement = document.createElement('div');
-                  postElement.classList.add('col-md-6', 'col-lg-3', 'd-flex', 'align-items-stretch');
+                  postElement.classList.add('col-md-6', 'd-flex', 'align-items-stretch');
                   postElement.setAttribute('data-aos','fade-up')
-                  postElement.setAttribute('data-aos-delay','200');
+                  let imageUrl = 'https:'+post.fields.image.fields.file.url
                   postElement.innerHTML = `
-                    <div class="icon-box icon-box-blue">
-                      <h4 class="title"><a href="">${post.fields.title}</a></h4>
-                      <p class="description"> ${post.fields.description} </p>
-                    </div>
+                    <div class="card">
+                      <div class="card-img">
+                        <imdd src="assets/img/usable/6.jpeg" alt="...">             
+                        <img src=${imageUrl} alt="..." style="width:100%;max-height:300px;object-fit:cover">
+                      </div>
+                      <div class="card-body">
+                        <h5 class="card-title"><a href="#">${post.fields.title}</a></h5>
+                        <p class="card-text">${post.fields.description}</p>
+                      </div>
+                    </div> 
                   `;
                   contentDiv.appendChild(postElement);
               });
