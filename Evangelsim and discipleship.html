@@ -178,7 +178,7 @@
   import { fetchContentByType } from './assets/js/contentful.js';
 
   document.addEventListener('DOMContentLoaded', () => {
-    const contentDiv = document.getElementById('contentful-values');
+    const contentDiv = document.getElementById('contentful-posts');
     contentDiv.innerHTML = '<p>Loading...</p>';
       fetchContentByType('posts', 'Evangelism and discipleship')
           .then(posts => {
