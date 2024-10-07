@@ -156,55 +156,10 @@ We have partnership with various organizations primarily for spiritual and socio
 
       <div class="container">
 
-        <div class="row gy-4">
+        <div class="row gy-4 id='contentful-teamMemberss'">
+      
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/usable/logo.png" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>John Manzi</h4>
-                <span>Head of Pastors</span>
-                <p>Explicabo voluptatem mollitia et repellat qui dolorum quasi</p>
-               
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/usable/logo.png" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Church Priest</span>
-                <p>Aut maiores voluptates amet et quis praesentium qui senda para</p>
-                
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/usable/logo.png" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Church asher</span>
-                <p>Quisquam facilis cum velit laborum corrupti fuga rerum quia</p>
-                
-              </div>
-            </div>
-          </div><!-- End Team Member -->
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="team-member d-flex align-items-start">
-              <div class="pic"><img src="assets/img/usable/logo.png" class="img-fluid" alt=""></div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Accountant</span>
-                <p>Dolorum tempora officiis odit laborum officiis et et accusamus</p>
-                
-              </div>
-            </div>
-          </div><!-- End Team Member -->
+         
 
         </div>
 
@@ -224,8 +179,7 @@ We have partnership with various organizations primarily for spiritual and socio
 
     <div class="footer-top">
       <div class="container">
-        <div class="row">
-
+        <div class="row 
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
@@ -284,23 +238,29 @@ We have partnership with various organizations primarily for spiritual and socio
   import { fetchContentByType } from './assets/js/contentful.js';
 
   document.addEventListener('DOMContentLoaded', () => {
-    const contentDiv = document.getElementById('contentful-posts');
+    const contentDiv = document.getElementById('contentful-teamMemberss');
     contentDiv.innerHTML = '<p>Loading...</p>';
-      fetchContentByType('ourValues', null)
-          .then(posts => {
-              contentDiv.innerHTML = '';
-              posts.forEach(post => {
-                  const postElement = document.createElement('div');
-                  postElement.classList.add('col-md-6', 'col-lg-3', 'd-flex', 'align-items-stretch');
-                  postElement.setAttribute('data-aos','fade-up')
-                  postElement.setAttribute('data-aos-delay','200');
-                  postElement.innerHTML = `
-                    <div class="icon-box icon-box-blue">
-                      <h4 class="title"><a href="">${post.fields.title}</a></h4>
-                      <p class="description"> ${post.fields.description} </p>
-                    </div>
+      fetchContentByType('teamMembers', 'about-us')
+          .then(teamMemberss => {
+            contentDiv.innerHTML = ''
+              teamMemberss.forEach(teamMembers => {
+                  const teamMembersElement = document.createElement('div');
+                  teamMembersElement.classList.add('col-md-6', 'd-flex', 'align-items-stretch');
+                  teamMembersElement.setAttribute('data-aos','fade-up')
+                  let imageUrl = 'https:'+teamMembers.fields.image.fields.file.url
+                  teamMembersElement.innerHTML = `
+                    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                      <div class="team-member d-flex align-items-start">
+                        <img src=${imageUrl} alt="..." style="width:100%;max-height:300px;object-fit:cover">
+                        <div class="member-info">
+                          <h4>${teamMembers.fields.name}</h4>
+                          <p>${teamMembers.fields.staffRole}</p>
+                
+                        </div>
+                      </div>
+                    </div><!-- End Team Member -->
                   `;
-                  contentDiv.appendChild(postElement);
+                  contentDiv.appendChild(teamMembersElement);
               });
           })
           .catch(error => console.error('Error fetching content:', error));
