@@ -253,7 +253,7 @@
   import { fetchContentByType } from './assets/js/contentful.js';
 
   document.addEventListener('DOMContentLoaded', () => {
-    const contentDiv = document.getElementById('contentful-posts');
+    const contentDiv = document.getElementById('contentful-values');
     contentDiv.innerHTML = '<p>Loading...</p>';
       fetchContentByType('ourValues', null)
           .then(posts => {
