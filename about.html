@@ -156,7 +156,7 @@ We have partnership with various organizations primarily for spiritual and socio
 
       <div class="container">
 
-        <div class="row gy-4 id='contentful-teamMemberss'">
+        <div class="row gy-4" id='contentful-teamMemberss'">
       
 
          
@@ -235,13 +235,22 @@ We have partnership with various organizations primarily for spiritual and socio
 
 </body>
 <script type="module">
-  import { fetchContentByType } from './assets/js/contentful.js';
+  // import { fetchContentByType } from './assets/js/contentful.js';
+  function fetchContentByType(contentType) {
+    return client.getEntries({ content_type: contentType })
+        .then(response => {
+            let items = response.items;
 
+            return items;
+        })
+        .catch(console.error);
+}
   document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('contentful-teamMemberss');
     contentDiv.innerHTML = '<p>Loading...</p>';
       fetchContentByType('teamMembers', 'about-us')
           .then(teamMemberss => {
+            console.log(teamMemberss)
             contentDiv.innerHTML = ''
               teamMemberss.forEach(teamMembers => {
                   const teamMembersElement = document.createElement('div');
