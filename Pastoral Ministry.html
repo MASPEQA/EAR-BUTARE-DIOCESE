@@ -177,6 +177,7 @@
     contentDiv.innerHTML = '<p>Loading...</p>';
       fetchContentByType('posts', 'pastoral ministry')
           .then(posts => {
+            console.log(posts)
             contentDiv.innerHTML = ''
               posts.forEach(post => {
                   const postElement = document.createElement('div');

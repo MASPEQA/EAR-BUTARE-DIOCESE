@@ -235,28 +235,20 @@ We have partnership with various organizations primarily for spiritual and socio
 
 </body>
 <script type="module">
-  // import { fetchContentByType } from './assets/js/contentful.js';
-  function fetchContentByType(contentType) {
-    return client.getEntries({ content_type: contentType })
-        .then(response => {
-            let items = response.items;
-
-            return items;
-        })
-        .catch(console.error);
-}
+  import { fetchContentByType } from './assets/js/contentful.js';
   document.addEventListener('DOMContentLoaded', () => {
     const contentDiv = document.getElementById('contentful-teamMemberss');
     contentDiv.innerHTML = '<p>Loading...</p>';
-      fetchContentByType('teamMembers', 'about-us')
+      fetchContentByType('teamMembers')
           .then(teamMemberss => {
             console.log(teamMemberss)
             contentDiv.innerHTML = ''
               teamMemberss.forEach(teamMembers => {
+                console.log(teamMembers)
                   const teamMembersElement = document.createElement('div');
                   teamMembersElement.classList.add('col-md-6', 'd-flex', 'align-items-stretch');
                   teamMembersElement.setAttribute('data-aos','fade-up')
-                  let imageUrl = 'https:'+teamMembers.fields.image.fields.file.url
+                  let imageUrl = 'https:'+teamMembers.fields.staffMember.fields.file.url
                   teamMembersElement.innerHTML = `
                     <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                       <div class="team-member d-flex align-items-start">

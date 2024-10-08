@@ -15,10 +15,10 @@ export function fetchContentByType(contentType, page) {
     return client.getEntries({ content_type: contentType })
         .then(response => {
             let items = response.items;
-            // If a page parameter is provided, filter the items based on the 'page' field
             if (page) {
                 items = items.filter(item => item.fields.page === page);
             }
+            console.log(items)
             return items;
         })
         .catch(console.error);
