@@ -60,7 +60,7 @@
               <li><a href="Mothers union.html">Mothers Union</a></li>
               <li><a href="Fathers Union.html">Fathers Union</a></li>
               <li><a href="Children and Youth.html">Children and Youth</a></li>
-              <li><a href="Evangelsim and discipleship.html">Evangelisim and Discipleship</a></li>
+              <li><a href="Evangelsim and discipleship.html">Evangelism and Discipleship</a></li>
             </ul>
           </li>
 
@@ -152,19 +152,18 @@
 
       </div>
     </section><!-- End Features Section -->
+
      <!-- ======= values sections =======  -->
+    </section><!-- End Features Section -->
+     <!-- ======= values sections ======= -->
      <section class="services">
       <div class="container">
-        <div class="container">
 
-          <div class="row" id="contentful-values">
-            <div class="section-title">
-              <h2>Our Values </h2>
-            </div>
+        <div class="row" id="contentful-values">
+          <div class="section-title">
+            <h3>Our Values </h3>
           </div>
-  
         </div>
-      </div>
 
       </div>
     </section>
@@ -254,7 +253,7 @@
   import { fetchContentByType } from './assets/js/contentful.js';
 
   document.addEventListener('DOMContentLoaded', () => {
-    const contentDiv = document.getElementById('contentful-posts');
+    const contentDiv = document.getElementById('contentful-values');
     contentDiv.innerHTML = '<p>Loading...</p>';
       fetchContentByType('ourValues', null)
           .then(posts => {
